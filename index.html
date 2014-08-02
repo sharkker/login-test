@@ -21,7 +21,7 @@ Confirm password: <input type="password" name="cpwd" size="30"><br>
 -->
 </form>
 
-<button name="submitbutton" type="button" onClick="validateForm()">Submit</button>
+<button id="submitButton" type="button" onClick="validateForm()">Submit</button>
 
 
 </div>
@@ -29,8 +29,8 @@ Confirm password: <input type="password" name="cpwd" size="30"><br>
 
 function validateForm()
 {
-	var sb = document.getElementsByName( "submitbutton" )[0].value;
-	sb.value = "Cancel";
+	// not sure what to do with this yet
+	var sb = document.getElementById( "submitButton" ).text = "Cancel";
 
 	// check first name
 	var fn = document.forms["regForm"]["firstname"].value.trim();
