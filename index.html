@@ -10,19 +10,19 @@ body {color:#FFFFFF;background-color:#26A7A5;}
 <img src="http://startupbeat.com/wp-content/uploads/2014/03/Pley-logo.jpg" width="314" height="192">
 <div id="bodyDiv">
 
-<form name="regForm" method="get" action="">
+<form name="regForm" method="post" action="">
 First name: <input type="text" name="firstname" size="30"><br>
 Last name: <input type="text" name="lastname" size="30"><br>
 E-mail: <input type="text" name="email" size="30"><br>
 Password: <input type="password" name="pwd" size="30"><br>
 Confirm password: <input type="password" name="cpwd" size="30"><br>
-
-<input type="submit" id="submitbutton" value="Submit" onclick="return validateForm();">
-
-</form>
 <!--
-><button name="submitButton" type="button" onClick="validateForm()">Submit</button>
+<input type="submit" id="submitbutton" value="Submit" onclick="return validateForm();">
 -->
+</form>
+
+<button name="submitButton" type="button" onClick="validateForm()">Submit</button>
+
 
 </div>
 <script>
