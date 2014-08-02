@@ -8,6 +8,8 @@ body {color:#FFFFFF;background-color:#26A7A5;}
 <body>
 
 <img src="http://startupbeat.com/wp-content/uploads/2014/03/Pley-logo.jpg" width="314" height="192">
+<div id="bodyDiv">
+
 <form name="regForm" method="post" onsubmit="return validateForm()">
 First name: <input type="text" name="firstname" size="30"><br>
 Last name: <input type="text" name="lastname" size="30"><br>
@@ -17,6 +19,7 @@ Confirm password: <input type="password" name="cpwd" size="30"><br>
 </form>
 <button type="button" onClick="validateForm()">Submit</button>
 
+</div>
 <script>
 
 function validateForm()
