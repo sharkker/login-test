@@ -8,7 +8,7 @@ body {color:#FFFFFF;background-color:#26A7A5;}
 <body>
 
 <img src="http://startupbeat.com/wp-content/uploads/2014/03/Pley-logo.jpg" width="314" height="192">
-<form method="post">
+<form name="regForm" method="post" onsubmit="return validateForm()">
 First name: <input type="text" name="firstname" size="30"><br>
 Last name: <input type="text" name="lastname" size="30"><br>
 E-mail: <input type="text" name="email" size="30"><br>
@@ -16,6 +16,34 @@ Password: <input type="password" name="pwd" size="30"><br>
 Confirm password: <input type="password" name="cpwd" size="30"><br>
 <input type="submit" value="Submit">
 </form>
+
+<script>
+function validateForm() {
+	// check first name
+	var fn = document.forms["regForm"]["firstname"].value.trim();
+	if ( ( fn == null ) || ( fn == "" ) ) {
+		alert( "First name cannot be empty" );
+		return false;
+	}
+	// check for illegal characters
+	if ( fn.search(/[^A-Za-z\s]/) != -1 ) {
+		alert( "First name must only contain letters and whitespace" )
+		return false;
+	}
+	
+	// check last name
+	var ln = document.forms["regForm"]["firstname"].value.trim();
+	if ( ( ln == null ) || ( ln == "" ) ) {
+		alert( "First name cannot be empty" );
+		return false;
+	}
+	// check for illegal characters
+	if ( ln.search(/[^A-Za-z\s]/) != -1 ) {
+		alert( "Last name must only contain letters and whitespace" )
+		return false;
+	}
+}
+</script>
 
 </body>
 </html>
