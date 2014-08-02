@@ -14,35 +14,71 @@ Last name: <input type="text" name="lastname" size="30"><br>
 E-mail: <input type="text" name="email" size="30"><br>
 Password: <input type="password" name="pwd" size="30"><br>
 Confirm password: <input type="password" name="cpwd" size="30"><br>
-<input type="submit" value="Submit">
 </form>
+<button type="button" onClick="validateForm()">Submit</button>
 
 <script>
-function validateForm() {
+
+function validateForm()
+{
 	// check first name
 	var fn = document.forms["regForm"]["firstname"].value.trim();
-	if ( ( fn == null ) || ( fn == "" ) ) {
+	if ( ( fn == null ) || ( fn == "" ) )
+	{
 		alert( "First name cannot be empty" );
 		return false;
 	}
 	// check for illegal characters
-	if ( fn.search(/[^A-Za-z\s]/) != -1 ) {
+	if ( fn.search(/[^A-Za-z\s]/) != -1 )
+	{
 		alert( "First name must only contain letters and whitespace" )
 		return false;
 	}
 	
 	// check last name
 	var ln = document.forms["regForm"]["firstname"].value.trim();
-	if ( ( ln == null ) || ( ln == "" ) ) {
+	if ( ( ln == null ) || ( ln == "" ) )
+	{
 		alert( "First name cannot be empty" );
 		return false;
 	}
 	// check for illegal characters
-	if ( ln.search(/[^A-Za-z\s]/) != -1 ) {
+	if ( ln.search(/[^A-Za-z\s]/) != -1 )
+	{
 		alert( "Last name must only contain letters and whitespace" )
 		return false;
 	}
+	
+	// check email
+	
+
+	// check password & confirm-password
+	
+
+	loadThankYou();
 }
+
+function loadThankYou() {
+	var xmlhttp;
+	if ( window.XMLHttpRequest ) // IE7+, Firefox, Chrome, Opera, Safari
+	{
+		xmlhttp = new XMLHttpRequest();
+	}
+	else // IE6, IE5
+	{
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function()
+	{
+		if ( ( xmlhttp.readyState == 4 ) && ( xmlhttp.status == 200 ) )
+		{
+			document.getElementById( "bodyDiv" ).innerHTML = xmlhttp.responseText;
+		}
+	}
+	xmlhttp.open( "GET", "thank_you.txt", true );
+	xmlhttp.send();
+}
+
 </script>
 
 </body>
