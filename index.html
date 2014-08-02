@@ -29,7 +29,7 @@ Confirm password: <input type="password" name="cpwd" size="30"><br>
 
 function validateForm()
 {
-	var sb = document.getElementsByName( "submitbutton" );
+	var sb = document.getElementsByName( "submitbutton" )[0].value;
 	sb.value = "Cancel";
 
 	// check first name
