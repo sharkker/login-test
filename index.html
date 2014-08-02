@@ -45,7 +45,7 @@ function validateForm()
 		return false;
 	}
 	// check for illegal characters
-	if ( fn.search( /^[A-Za-z ]*$/ ) != -1 )
+	if ( fn.search( /^[A-Za-z ]*$/ ) == -1 )
 	{
 		alert( "First name must only contain letters and whitespace" )
 		return false;
@@ -59,7 +59,7 @@ function validateForm()
 		return false;
 	}
 	// check for illegal characters
-	if ( ln.search( /^[A-Za-z ]*$/ ) != -1 )
+	if ( ln.search( /^[A-Za-z ]*$/ ) == -1 )
 	{
 		alert( "Last name must only contain letters and whitespace" )
 		return false;
