@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+<!--
+With thanks to w3schools.com, stackoverflow.com and
+google.com (which mostly returned links from the first two)
+-->
 
 <style>
 body {color:#FFFFFF;background-color:#26A7A5;}
@@ -11,11 +15,11 @@ body {color:#FFFFFF;background-color:#26A7A5;}
 <div id="bodyDiv">
 
 <form name="regForm" method="post" action="">
-First name: <input type="text" name="firstname" size="30"><br>
-Last name: <input type="text" name="lastname" size="30"><br>
+First Name: <input type="text" name="firstname" size="30"><br>
+Last Name: <input type="text" name="lastname" size="30"><br>
 E-mail: <input type="text" name="email" size="30"><br>
 Password: <input type="password" name="pwd" size="30"><br>
-Confirm password: <input type="password" name="cpwd" size="30"><br>
+Confirm Password: <input type="password" name="cpwd" size="30"><br>
 <!--
 <input type="submit" id="submitbutton" value="Submit" onclick="return validateForm();">
 -->
@@ -30,7 +34,8 @@ Confirm password: <input type="password" name="cpwd" size="30"><br>
 function validateForm()
 {
 	// not sure what to do with this yet
-	document.getElementById( "submitButton" ).text = "Cancel";
+	//var sb = document.getElementById( "submitButton" );
+	//sb.text = "Cancel";
 
 	// check first name
 	var fn = document.forms["regForm"]["firstname"].value.trim();
@@ -40,7 +45,7 @@ function validateForm()
 		return false;
 	}
 	// check for illegal characters
-	if ( fn.search(/[^A-Za-z\s]/) != -1 )
+	if ( fn.search( /^[A-Za-z ]*$/ ) != -1 )
 	{
 		alert( "First name must only contain letters and whitespace" )
 		return false;
@@ -54,19 +59,61 @@ function validateForm()
 		return false;
 	}
 	// check for illegal characters
-	if ( ln.search(/[^A-Za-z\s]/) != -1 )
+	if ( ln.search( /^[A-Za-z ]*$/ ) != -1 )
 	{
 		alert( "Last name must only contain letters and whitespace" )
 		return false;
 	}
 	
 	// check email
-	
+	var em = document.forms["regForm"]["email"].value.trim();
+	if ( ( em == null ) || ( em == "" ) )
+	{
+		alert( "Email address cannot be empty" );
+		return false;
+	}
+	// check for valid email format (regex from w3, though this is apparently a contentious subject)
+	if ( em.search( /([\w\-]+\@[\w\-]+\.[\w\-]+)/ ) == -1 )
+	{
+		alert( "Email address " + em + " has invalid format" )
+		return false;
+	}
 
 	// check password & confirm-password
-	
+	var pw = document.forms["regForm"]["pwd"].value.trim();
+	var cpw = document.forms["regForm"]["cpwd"].value.trim();
+	if ( ( pw == null ) || ( pw == "" ) )
+	{
+		alert( "Password cannot be empty" );
+		return false;
+	}
+	if ( pw.length < 6 )
+	{
+		alert( "Password must contain at least six characters" );
+		return false;
+	}
+	if ( pw.search( /[0-9]/ ) == -1 )
+	{
+		alert( "Password must contain at least one number (0-9)" );
+		return false;
+	}
+	if ( pw.search( /[a-z]/ ) == -1 )
+	{
+		alert( "Password must contain at least one lowercase letter (a-z)" );
+		return false;
+	}
+	if ( pw.search( /[A-Z]/ ) == -1 )
+	{
+		alert( "Password must contain at least one uppercase letter (A-Z)" );
+		return false;
+	}
+	if ( pw != cpw )
+	{
+		alert( "Password and Confirm Password must match" );
+		return false;
+	}
 
-	//loadThankYou();
+	loadThankYou();
 }
 
 function loadThankYou() {
@@ -77,7 +124,7 @@ function loadThankYou() {
 	}
 	else // IE6, IE5
 	{
-		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		xmlhttp = new ActiveXObject( "Microsoft.XMLHTTP" );
 	}
 	xmlhttp.onreadystatechange=function()
 	{
